@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery - Wanderlust Voyages</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+  
+  .gallery-container {
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-top: 40px;
+  }
+
+  .gallery-container img {
+	width: 24%;
+	margin-bottom: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+ * {
+  box-sizing: border-box;
+  }
+  .slideshow-img {
+  vertical-align: middle;
+  width: 100%;
+  }
+  /* Position the image container (needed to position the left and right
+  arrows) */
+  .container {
+  position: relative;
+  }
+  /* Hide the images by default */
+  .mySlides {
+  display: show;
+  }
+  /* Add a pointer when hovering over the thumbnail images */
+  .cursor {
+  cursor: pointer;
+  }
+  /* Next & previous buttons */
+  .prev,
+  .next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: rgb(30, 12, 12);
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+  }
+  /* Position the "next button" to the right */
+  .next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+  }
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+  background-color: rgba(157, 134, 134, 0.8);
+  }
+  /* Number text (1/3 etc) */
+  .numbertext {
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+    }
+    .banner-container {
+      text-align: center;
+    }
+
+    .banner-container img {
+      width: 70%;
+      max-width: 100%; /* To ensure the image doesn't exceed its container */
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div>
+    <header>
+      <h1 class="headerH1">Wanderlust Voyages | Travel Agency</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tasks.html">Tasks</a></li>
+      </ul>
+    </nav>
+  
+    <main class="services">
+      <h1>Gallery</h1>
+
+      <div class="gallery-container">
+        <div class="container">
+          
+          <div class="mySlides">
+            <div class="numbertext">1 / 8</div>
+            <img src="images/1.jpeg" alt="Spa Image 1">
+          </div>
+
+          
+          <div class="mySlides">
+            <div class="numbertext">2 / 8</div>
+            <img src="images/2.jpeg" alt="Spa Image 2">
+          </div>
+
+          
+          <div class="mySlides">
+            <div class="numbertext">3 / 8</div>
+            <img src="images/3.jpeg" alt="Spa Image 3">
+          </div>
+
+          
+          <div class="mySlides">
+            <div class="numbertext">4 / 8</div>
+            <img src="images/4.jpeg" alt="Spa Image 4">
+          </div>
+
+          
+          <div class="mySlides">
+            <div class="numbertext">5 / 8</div>
+            <img src="images/5.jpeg" alt="Spa Image 5">
+          </div>
+
+         
+          <div class="mySlides">
+            <div class="numbertext">6 / 8</div>
+            <img src="images/6.jpeg" alt="Spa Image 6">
+          </div>
+
+          
+          <div class="mySlides">
+            <div class="numbertext">7 / 8</div>
+            <img src="images/7.jpeg" alt="Spa Image 7">
+          </div>
+
+          
+          <div class="mySlides">
+            <div class="numbertext">8 / 8</div>
+            <img src="images/8.jpeg" alt="Spa Image 8">
+          </div>
+
+          <a class="prev" href="#">Previous</a>
+          <a class="next" href="#">Next</a>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <section class="cta-container">
+        <h2>Ready to Experience Our Services?</h2>
+        <p>Join us today and discover the difference we can make for you!</p>
+        <a href="contact.html" class="cta-button">Contact Us Now</a>
+      </section>
+    </main>
+    <footer>
+      <ul>
+        <li><a href="https://www.facebook.com/">Facebook</a></li>
+        <li><a href="https://twitter.com/">Twitter</a></li>
+        <li><a href="https://www.instagram.com/">Instagram</a></li>
+      </ul>
+      <p>&copy; 2024 Wanderlust Voyages | Travel Agency. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    
+  let currSlide = 0; // Tracks the current slide number
+  const slides = document.querySelectorAll('.mySlides'); // Get all slide elements
+
+  // update slide visibility
+  function showSlide(slideNumber) {
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = 'none';
+    }
+    
+    // Ensure slideNumber is within valid bounds
+    if (slideNumber < 0) {
+      currentSlide = slides.length - 1; // Wrap to the last slide
+    } else if (slideNumber >= slides.length) {
+      currentSlide = 0; // Wrap to the first slide
+    } else {
+      currentSlide = slideNumber;
+    }
+    
+    // Display the current slide
+    slides[currentSlide].style.display = 'block';
+    
+    // Update the slide number text
+    document.querySelector('.numbertext').textContent = `${currentSlide + 1} / ${slides.length}`;
+  }
+
+  // increment the current slide
+  function nextSlide() {
+    showSlide(currentSlide + 1);
+  }
+
+  // decrement the current slide
+  function prevSlide() {
+    showSlide(currentSlide - 1);
+  }
+
+  showSlide(currentSlide);
+
+  // Event listeners for the next and previous buttons
+  document.querySelector('.next').addEventListener('click', nextSlide);
+
+  document.querySelector('.prev').addEventListener('click', prevSlide);
+
+  /*created a basic HTML structure, with a container div and individual slide divs, each containing an image and slide number then applied CSS styles to format  the slideshow , making sure they looked visually appealing to the user.e.g hiding all slides initially.
+  Went ahead to use javascript to track the current slide, creating functions to increment and decrement the slide number, and writing a function to update slide visibility. The problem i came across was the issue of the slideshows not wrapping around meaning, when the user come to the end of the slide show
+  they might click next not knowing they had reached the end. This was solved by using conditional statements to check if the next or previous slide exceeded the bounds of the available slides. If it did,  it would be wrapped to the first or last slide. The images for the slideshow are
+  not being diplayed on the screen*/
+
+  </script>
+</body>
+</html>
