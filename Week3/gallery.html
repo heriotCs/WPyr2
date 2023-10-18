@@ -10,14 +10,16 @@
 	margin: 0 auto;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
 	margin-top: 40px;
   }
 
   .gallery-container img {
-	width: 24%;
-	margin-bottom: 20px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 500px; 
+  height: 250px; 
+  margin: 10px; 
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   }
  * {
   box-sizing: border-box;
@@ -44,7 +46,7 @@
   .next {
   cursor: pointer;
   position: absolute;
-  top: 40%;
+  top: 10%;
   width: auto;
   padding: 16px;
   margin-top: -50px;
@@ -107,51 +109,8 @@
       <div class="gallery-container">
         <div class="container">
           
-          <div class="mySlides">
-            <div class="numbertext">1 / 8</div>
-            <img src="images/1.jpeg" alt="Spa Image 1">
-          </div>
-
-          
-          <div class="mySlides">
-            <div class="numbertext">2 / 8</div>
-            <img src="images/2.jpeg" alt="Spa Image 2">
-          </div>
-
-          
-          <div class="mySlides">
-            <div class="numbertext">3 / 8</div>
-            <img src="images/3.jpeg" alt="Spa Image 3">
-          </div>
-
-          
-          <div class="mySlides">
-            <div class="numbertext">4 / 8</div>
-            <img src="images/4.jpeg" alt="Spa Image 4">
-          </div>
-
-          
-          <div class="mySlides">
-            <div class="numbertext">5 / 8</div>
-            <img src="images/5.jpeg" alt="Spa Image 5">
-          </div>
-
-         
-          <div class="mySlides">
-            <div class="numbertext">6 / 8</div>
-            <img src="images/6.jpeg" alt="Spa Image 6">
-          </div>
-
-          
-          <div class="mySlides">
-            <div class="numbertext">7 / 8</div>
-            <img src="images/7.jpeg" alt="Spa Image 7">
-          </div>
-
-          
-          <div class="mySlides">
-            <div class="numbertext">8 / 8</div>
-            <img src="images/8.jpeg" alt="Spa Image 8">
+          <div class="gallery-container">
+            <img src="images/1.jpeg" alt="Spa Image 1" id="slide">
           </div>
 
           <a class="prev" href="#">Previous</a>
@@ -177,49 +136,30 @@
   </div>
 
   <script>
-    
-  let currSlide = 0; // Tracks the current slide number
-  const slides = document.querySelectorAll('.mySlides'); // Get all slide elements
+    let curr = 0;
+    const images = [
+      "images/1.jpeg",
+      "images/2.jpeg",
+      "images/3.jpeg",
+      "images/4.jpeg",
+      "images/5.jpeg",
+      "images/6.jpeg",
+      "images/7.jpeg",
+      "images/8.jpeg"
+    ];
+    const interval = 7000; // Change image every 7 seconds 
 
-  // update slide visibility
-  function showSlide(slideNumber) {
-    for (let i = 0; i < slides.length; i++) {
-      slides[i].style.display = 'none';
+    function changeImage() {
+      const slide = document.getElementById("slide");
+      slide.src = images[curr];
+      curr = (curr + 1) % images.length; // Loop through images
     }
-    
-    // Ensure slideNumber is within valid bounds
-    if (slideNumber < 0) {
-      currentSlide = slides.length - 1; // Wrap to the last slide
-    } else if (slideNumber >= slides.length) {
-      currentSlide = 0; // Wrap to the first slide
-    } else {
-      currentSlide = slideNumber;
-    }
-    
-    // Display the current slide
-    slides[currentSlide].style.display = 'block';
-    
-    // Update the slide number text
-    document.querySelector('.numbertext').textContent = `${currentSlide + 1} / ${slides.length}`;
-  }
 
-  // increment the current slide
-  function nextSlide() {
-    showSlide(currentSlide + 1);
-  }
+    // Run the function every 'interval' milliseconds
+    setInterval(changeImage, interval);
 
-  // decrement the current slide
-  function prevSlide() {
-    showSlide(currentSlide - 1);
-  }
-
-  showSlide(currentSlide);
-
-  // Event listeners for the next and previous buttons
-  document.querySelector('.next').addEventListener('click', nextSlide);
-
-  document.querySelector('.prev').addEventListener('click', prevSlide);
-
+    // Run the function when the page loads
+    window.onload = changeImage;
   </script>
 </body>
 </html>
